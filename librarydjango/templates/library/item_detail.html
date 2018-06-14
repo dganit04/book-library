@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load static %}
+<!-- Show book details -->
+
+{% block content %}
+    <div class="detail-container">
+        <h3>
+            <span title="{{ item.title | capfirst }}">{{ item.title | capfirst }}</span>
+            <a class="delete-item" href="{% url 'item_delete' item.id %}"><span class="glyphicon glyphicon-remove"></span></a>
+        </h3>
+        <hr>
+        <div>
+            <img class="detail-img" src= "{% static '' %}{{ item.pic }}" alt="My image">
+            <p>{{ item.description }}</p>
+        </div>
+        <h4>Author: {{ item.author }} <a class="back" href="{% url 'index' %}"> Back to library</a></h4>
+    </div>
+{% endblock %}

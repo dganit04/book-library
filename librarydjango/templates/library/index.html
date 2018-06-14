@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+<!-- Show books in library -->
+
+{% block content %}
+    <div class="container">
+        <h3>Kids Books - <span class="book-count">{{ items | length }} books</span></h3>
+      	<div class="button-group">
+            <a href="{% url 'item_create_update' 'a' %}" class="button">Add</a>
+            <a href="{% url 'reset' %}" class="button">Reset</a>
+            <button class="button" id="random">Random</button>
+            <button class="button" id="original">Original</button>
+            <button class="button" id="ascending">Ascending</button>
+            <button class="button" id="author1">Amanda J.</button>
+            <button class="button" id="author2">Don D.</button>
+            <button class="button" id="all">Show All</button>
+        </div>
+
+
+        <div class="grid">
+            <div class="grid-sizer"></div>
+            {% for item in items %}
+                <div class="grid-item {{ item.class }}">
+                    <a class="delete-item" href="{% url 'item_delete' item.id %}">
+                        <span class="glyphicon glyphicon-remove"></span></a>
+                    <a class="update-item" href="{% url 'item_create_update' item.id %}">
+                        <span class="glyphicon glyphicon-pencil"></span></a>
+                    <a href="{% url 'item_detail' item.id %}">
+                        <img src="{% static '' %}{{ item.pic }}">
+                        <span title="{{ item.title }}" class="title"><span>{{ item.title }}</span></span>
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

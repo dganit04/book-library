@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load static %}
+<!-- Create new/Update a book details -->
+
+{% block content %}
+    <h1>New Book</h1>
+    <form method="post" action="" class="form">{% csrf_token %}
+        <fieldset>
+            {% for field in form %}
+                <div class="form-group">
+                    <label for="id_{{ field.name }}">{{ field.label }}</label>
+                    {{ field.errors }}
+                    {{ field }}
+                    {{ field.help_text }}
+                </div>
+            {% endfor %}
+            <button type="submit" class="btn btn-primary">Save</button>
+            <a href="{% url 'index' %}" class="btn btn-default go-back">Cancel</a>
+        </fieldset>
+        <!--{{ form }} # that way we can not give classes to each field, the above way (for field in form) - we have more control-->
+    </form>
+{% endblock %}
+
+

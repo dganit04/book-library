@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load static %}
+<!-- Delete confirmation form -->
+
+{% block content %}
+    <form action="" method="post"> {% csrf_token %}
+        <div class="detail-container">
+            <h3>{{ item.title | capfirst }}</h3>
+            <hr>
+            <h4>Author: {{ item.author }}</h4>
+            <h5>Are you sure you want to delete '{{ item.title }}'?</h5>
+            <div class="button-group">
+                <a href="{% url 'index' %}" class="btn btn-info">Cancel</a>
+                <button type="submit" class="btn btn-success">Delete</button>
+            </div>
+        </div>
+    </form>
+{% endblock %}
