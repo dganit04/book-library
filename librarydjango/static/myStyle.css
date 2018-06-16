@@ -183,7 +183,7 @@ fieldset button, fieldset a {margin-top: 10px;}
 
 h5 {margin-bottom: 20px;}
 
-/********************* overwrite bootstrap **********/
+/********************* overwrite bootstrap classes **********/
 
 .form-group {font-size: 12px; color: #999;}
 .form-group label {font-size: 14px;}
